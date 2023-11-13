@@ -14,12 +14,7 @@ class ItemController {
                 id: Number (req.params.id)
             },
             include: {
-                cosplayCatalog:{
-                    select: {
-                        name: true,
-                        description: true
-                    }
-                } 
+                cosplayCatalog: true
             }
         })
     
@@ -68,7 +63,7 @@ class ItemController {
 
     static async updateItem(req, res){
         try {
-            const update = await prisma.category.update({
+            const update = await prisma.item.update({
                 where: {
                     id: Number (req.params.id)
                 },
@@ -86,7 +81,7 @@ class ItemController {
                 return res.status(404).json({ error: 'Item ID does not exist' })
             }
 
-            res.status(500).json({ error: 'An error occured while trying to delete a catalog' })
+            res.status(500).json({ error: 'An error occured while trying to update an item' })
         }
     }
 }

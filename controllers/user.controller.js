@@ -66,7 +66,7 @@ class UserController {
             // apakah user password-nya sudah valid
             const isPasswordValid = decodeHash(password, findUser.password)
             if (isPasswordValid){
-                // nuatkan token
+                // muatkan token
                 const { id, username, role } = findUser
                 res.status(200).json({
                     token: generateToken({ id, username, role})
