@@ -59,8 +59,6 @@ class UserController {
             }
         })
 
-        console.log(username, password)
-
         // lakukan proses
         if( findUser ){
             // apakah user password-nya sudah valid
