@@ -1,7 +1,18 @@
 const { PrismaClient } = require("@prisma/client");
-const CatalogControllers = require("../controllers/catalogs.controller");
 const prisma = new PrismaClient();
 
+const Users = [
+    {
+        username: 'admin',
+        password: 'admin123',
+        role: 1
+    },
+    {
+        username: 'ayundari',
+        password: 'ayupradnyandarii',
+        role: 2
+    },
+]
 const Categories = [
     {
         category: 'Genshin Impact',
@@ -48,6 +59,12 @@ const CosplayCatalogs = [
 ];
 
 async function main() {
+    for(const user of Users) {
+        await prisma.user.create({
+           data: user
+        })
+    }
+
     for(const category of Categories) {
         await prisma.category.create({
            data: category
