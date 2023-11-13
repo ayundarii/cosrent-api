@@ -1,15 +1,16 @@
 const { PrismaClient } = require("@prisma/client");
+const { generateHash } = require("../utils/bcrypt");
 const prisma = new PrismaClient();
 
 const Users = [
     {
         username: 'admin',
-        password: 'admin123',
+        password: generateHash('admin123'),
         role: 1
     },
     {
         username: 'ayundari',
-        password: 'ayupradnyandarii',
+        password: generateHash('ayupradnyandarii'),
         role: 2
     },
 ]
@@ -27,6 +28,39 @@ const Categories = [
         description: 'Various catalogs inspired by the anime Violet Evergarden',
     }
 ];
+
+const Items = [
+    {
+        name: 'Wig March 7th',
+        description: 'Wig for the March 7th Cosplay',
+        catalogId: 1
+    },
+    {
+        name: 'Dress March 7th',
+        description: 'Dress for the March 7th Cosplay',
+        catalogId: 1
+    },
+    {
+        name: 'Wig Kokomi',
+        description: 'Wig for the Kokomi Cosplay',
+        catalogId: 2
+    },
+    {
+        name: 'Dress Kokomi',
+        description: 'Dress for the Kokomi Cosplay',
+        catalogId: 2
+    },
+    {
+        name: 'Wig Violet',
+        description: 'Wig for the Violet Cosplay',
+        catalogId: 3
+    },
+    {
+        name: 'Dress Violet',
+        description: 'Dress for the Violet Cosplay',
+        catalogId: 3
+    },
+  ];
 
 const CosplayCatalogs = [
     {
@@ -74,6 +108,12 @@ async function main() {
     for (const catalog of CosplayCatalogs) {
         await prisma.cosplayCatalog.create({
             data: catalog
+        })
+    }
+
+    for (const item of Items) {
+        await prisma.item.create({
+            data: item
         })
     }
 
