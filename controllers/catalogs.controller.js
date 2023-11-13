@@ -96,6 +96,29 @@ class CatalogControllers {
             res.status(500).json({ error: 'An error occured while trying to delete a catalog' })
         }
     }
+
+    static async updateCatalog(req, res){
+        const update = await prisma.cosplayCatalog.update({
+            where: {
+                id: Number (req.params.id)
+            },
+            data: {
+                name: req.body.name,
+                description: req.body.description,
+                size: req.body.size,
+                price: Number(req.body.price),
+                img: req.body.img,
+                availability: Boolean(req.body.availability),
+                categoryId: req.body.categoryId
+            },
+            
+        })
+        if(update){
+            res.status(201).json({ data: update, message: "Data succesfully updated" })
+        } else {
+            res.status(404).json({ message: "Data not found" })
+        }
+    }
 }
 
 module.exports = CatalogControllers

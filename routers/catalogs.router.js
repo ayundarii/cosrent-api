@@ -6,6 +6,7 @@ const router = Router()
 router.get("/catalogs", CatalogControllers.getCatalogs)
 router.get("/catalogs/:id", CatalogControllers.getCatalogById)
 router.post("/catalogs/add", CatalogControllers.addCatalog)
+router.put("/catalogs/:id/update", CatalogControllers.updateCatalog)
 router.delete("/catalogs/:id", CatalogControllers.deleteCatalog)
 
 module.exports = router
