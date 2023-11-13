@@ -21,7 +21,7 @@ model CosplayCatalog {
   items           Item[]
   img             String
   availability    Boolean
-  category        Category          @relation(fields: [categoryId], references: [id])
+  category        Category          @relation(fields: [categoryId], references: [id], onDelete: NoAction)
   categoryId      Int
   transaction     Transaction[]             
 }
@@ -30,7 +30,7 @@ model Item {
   id              Int               @id @default(autoincrement())
   name            String
   description     String?
-  cosplayCatalog  CosplayCatalog    @relation(fields: [catalogId], references: [id])
+  cosplayCatalog  CosplayCatalog    @relation(fields: [catalogId], references: [id], onDelete: NoAction)
   catalogId       Int
 }
 
@@ -52,9 +52,9 @@ model Transaction {
   description     String?
   totalCost       Int
   status          String           
-  cosplayCatalog  CosplayCatalog    @relation(fields: [catalogId], references: [id])
+  cosplayCatalog  CosplayCatalog    @relation(fields: [catalogId], references: [id], onDelete: NoAction)
   catalogId       Int
-  user            User              @relation(fields: [userId], references: [id])
+  user            User              @relation(fields: [userId], references: [id], onDelete: NoAction)
   userId          Int   
 }
 
