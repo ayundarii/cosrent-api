@@ -54,6 +54,9 @@ This API is designed for managing cosplay rentals, providing a set of endpoints 
 * Robust error handling 🚨.
 * JWT-based user authentication 🔒.
 
+## API Documentation
+https://documenter.getpostman.com/view/19992119/2s9YXmWfPP
+
 ## Installation
 
 1. Install all dependencies:
